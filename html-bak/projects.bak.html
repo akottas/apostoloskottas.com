@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Apostolos Kottas - Project Pages</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="index.html">Apostolos Kottas</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="about.html">about</a></li>
+                            <li><a href="projects.html">projects</a></li>
+                            <li><a href="artwork.html">artwork</a></li>
+                            <li><a href="about.html#contact">contact</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+                <h1>Project Pages</h1>
+            </div>
+
+            <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#electronics" data-toggle="tab">Electronics</a></li>
+                    <li><a href="#robotics" data-toggle="tab">Robotics</a></li>
+                </ul>
+            
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="electronics">
+						<h2>A compilation of electrical devices I designed, built, or otherwise hacked.</h2>
+						<div class="container-fluid">
+							<h2><small>How I converted an old Roomba Robot to use a custom lithium-ion polymer battery pack</small></h2>
+							<div class="row-fluid">
+								<div class="span12">
+									<p>A friend gave me his old (original model) Roomba robotic vacuum cleaner some time back. He had lost the charger for it, but more importantly, the NiCd battery pack was really old and would no longer hold a charge - at least the way it used to. So I removed the original battery pack from the plastic casing.<br><br>
+									I noted the dimensions of the OEM battery housing and planned to build up my own battery pack, from scratch. To meet the main DC voltage requirements for the Roomba, I needed 4-series Lithium-ion cells (3V min, 3.7V nominal, 4.2V max - per cell), so totaling a range between 12V to 16.8V. Since I had enough room in the battery's plastic case, and I wanted to ensure the robot could vacuum my entire apartment (at least once), I went with 2 parallel cells per each series cell.<br><br>
+									I soldered together eight individual 1320 mAh lithium-ion polymer battery cells in a 4-series and 2-parallel (4s2p) arrangement, which I placed into the old battery's housing. I rewired the old metal-contact that was being used for a temperature line to instead serve as a "system present" pin. The temperature pin was no longer needed, since the fuel-gauge IC had its own internal temperature monitoring system (two thermistors, with four-tier software and hardware safety features). I wired a three-way switch to toggle between OFF/ON/SLEEP, using the metal contact as a simple and direct method to put the fuel-gauge IC into a low-power sleep mode - which minimizes power losses when the robot is not in active use.<br><br>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span6">
+									The resultant battery pack is shown in this old casing (with its top removed to show the circuit board) when calibrating the fuel-gauge and running some (dis)charge cycle tests. To charge the battery, I used a COTS Li-ion polymer battery charger. I retrofitted a new plug into the robot's existing charger input - this way I can charge the battery while its plugged into the underside of the robot. I also dremeled out three sections on the battery's plastic casing. One to access the SMBus terminal plug, the second to view the LED battery status indicators, and a third to fit in a button for pressing to display the battery's remaining charge. The result looks really neat. So after some minimal rewiring and modifications, the robot worked great! It last much longer than it ever did (over 2 hours), and provides plenty of power to its motors.</p>
+								</div>
+								<ul class="thumbnails">
+									<li class="span6">
+										<div class="thumbnail">
+											<img src="images/projects/Roomba_4s2p_LiPB_11Feb2010_00_web_l.jpg" alt="roomba-4s2p-lipb-01">
+										</div>
+									</li>
+								</ul>
+							</div><!--row-fluid-->
+						</div><!--container-fluid ELECTRONICS PROJECT 1-->
+
+						<div class="container-fluid">
+							<h2><small>Lithium-ion polymer battery pack fuel-gauge PCBs</small></h2>
+							<div class="row-fluid">
+								<div class="span12">
+									<p>Two printed circuit boards (PCBs) are illustrated here, both are very similar, but are retrofitted for use in slightly different battery packs. Each of these circuits are based on Texas Instruments' bq20z80A-v110 fuel-gauge chipset - which includes the bq29312A analog front-end IC. The left image shows a 2-series and 1-parallel (or 2s1p, for short) 1900 mAh lithium-ion polymer battery (LiPB) pack, whereas the right image shows a 1320 mAh 3s1p LiPB pack. In both pictures, you can see the finished PCBs as they look mounted on top of their respective battery pack (far left), the PCB fully populated but not attached to a battery (middle), and an unpopulated bare PCB (far right). Note, the 2s1p PCB is the PCB that has rounded edges.</p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<ul class="thumbnails">
+										<li class="span6">
+											<div class="thumbnail">
+												<img src="images/projects/LiPB_2s1p_Pics_with_Batt_PopulatedPCB_and_BarePCB_v2_web.png" alt="lipb-2s1p-01">
+											</div>
+										</li>
+										<li class="span6">
+											<div class="thumbnail">
+												<img src="images/projects/LiPB_3s1p_Pics_with_Batt_PopulatedPCB_and_BarePCB_v2_web.png" alt="lipb-3s1p-01">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div><!--row-fluid-->
+						</div><!--container-fluid ELECTRONICS PROJECT 2-->
+					</div><!--tab-pane ELECTRONICS-->
+					
+
+
+                    <div class="tab-pane" id="robotics">
+						<h2>Several robotic systems I designed, built, or worked on.</h2>
+						<div class="container-fluid">
+							<h2><small>A mobile docking &amp; recharging station for small mobile robots during remote missions</small></h2>
+							<div class="row-fluid">
+								<div class="span12">
+									<p>The purpose of the Mobile Docking and Recharging Station (MDS) is exactly what its name implies. It collects, recharges, and re-deploys small robots that may run out of power during active use in remote, potentially hazardous environments. <br><br><!--individual units in a distributed team of small mobile robots.--> 
+									My role in this project was to design and implement the electrical systems comprising the power distribution circuits onboard the MDS, the electronics of the robots housed inside, as well as the interface between the two.<br><br>
+									The images below show the MDS during testing, with a Gumstix Robot in each of its six internal bays. You can also see a robot being deployed in the third thumbnail. The fourth image illustrates one of the four 3s4p 7600 mAh Li-ion polymer battery packs, with its fuel-gauge PCB attached.</p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<ul class="thumbnails">
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-Sys-01.jpg" alt="mds-sys-img-01">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-Sys-02.jpg" alt="mds-sys-img-02">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-Sys-03.jpg" alt="mds-sys-img-03">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-LiPB-01.jpg" alt="mds-lipb-img-01">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div><!--row-fluid-->
+							<div class="row-fluid">
+								<div class="span12">
+									<p>The stack of perf-boards shown below house a complex power management and distribution system that sits atop the MDS. There are four DC/DC converters (two of which are high-power SEPIC converters), and a 400 MHz Gumstix single-board computer running an embedded Linux Kernel. The resultant system facilitates UPS functionality onboard the MDS, using up to four of these 7600 mAh battery packs. <!--Six robots (with 1320 mAh LiPB cells) can be charged at a 1C rate, from full to empty and  switch-->  </p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<ul class="thumbnails">
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-PCB-01.jpg" alt="mds-pcb-img-01">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-PCB-02.jpg" alt="mds-pcb-img-02">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-PCB-03.jpg" alt="mds-pcb-img-03">
+											</div>
+										</li>
+										<li class="span3">
+											<div class="thumbnail">
+												<img src="images/projects/MDS_pwr_distrib_stack/MDS-PCB-04.jpg" alt="mds-pcb-img-04">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div><!--row-fluid-->
+						</div><!--container-fluid ROBOTICS PROJECT 1-->
+
+
+						<div class="container-fluid">
+							<h2><small>An aquatic robot for collecting water samples</small></h2>
+							<div class="row-fluid">
+								<div class="span12">
+									<p>I worked on this "Aqua-Pod Robot" project with a team of six engineers (including myself). Two mechanical engineers, one firmware/electrical engineer, two computer scientists, and me - the electrical engineer (a third mechanical engineer joined the team a year or so later). The purpose was to design a robot to facilitate assessing water contaminant levels in the marshlands of Louisiana, following the Deepwater Horizon Oil Spill of 2010 in the Golf of Mexico.<br><br>
+									Given a general set of specifications from a group of geologists and other scientists, our role was to make these a reality. I was the lead electrical engineer on this project. My role was to realize all electronics inside and outside the robot. This included two custom PCBs (shown circled in the image below) - one of which was designed with the firmware/electrical engineer in the team (Sandeep Dhull) whom I was teaching how to do PCB layout in Eagle and the intricacies involved in such a system's design. In a similar fashion, we also architected everything electrical and electromechanical to the robot. This includes a variety of sensors (pressure, humidity, temperature, etc), a COTS single-board computer with an ARM processor (the <a href="https://www.sparkfun.com/products/8755">Package Tracker</a> from Sparkfun), a GPS module, IP-68 water-resistant plugs and ports, and inter-board connections. In addition, there was a DC motor for buoyancy control, and two external servo motors for opening/closing the lids on viles for water sample collection.</p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<ul class="thumbnails">
+										<li class="span4">
+											<div class="thumbnail">
+												<img src="images/projects/aquapod_pictures/AquaPodRobot_Internals_Spring2011_v1.png" alt="aquapod-robot-img-01">
+											</div>
+										</li>
+										<li class="span4">
+											<div class="thumbnail">
+												<img src="images/projects/aquapod_pictures/aquapod-main-pcb-01.jpg" alt="aquapod-robot-img-02">
+											</div>
+										</li>
+										<li class="span4">
+											<div class="thumbnail">
+												<img src="images/projects/aquapod_pictures/aquapod-main-pcb-02.jpg" alt="aquapod-robot-img-03">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div><!--row-fluid-->
+							<div class="row-fluid">
+								<div class="span12">
+									<p>The middle and right two images are the top and bottom sides (respectively) of the main PCB - which is shown circled in light blue inside the robot (in the left image).</p>
+								</div>
+							</div><!--row-fluid-->
+						</div><!--container-fluid ROBOTICS PROJECT 2-->
+
+
+						<div class="container-fluid">
+							<h2><small>Gumxtix Robot</small></h2>
+							<div class="row-fluid">
+								<div class="span12">
+									<p>Under construction... coming soon!</p>
+								</div>
+								<ul class="thumbnails">
+									<li class="span6">
+										<div class="thumbnail">
+											
+										</div>
+									</li>
+								</ul>
+							</div><!--row-fluid-->
+						</div><!--container-fluid ROBOTICS PROJECT 1-->
+					</div><!--tab-pane ROBOTICS-->
+
+				</div><!--tab-content-->
+            </div><!--tabbable tabs-left-->
+        </div> <!--container-->
+
+            <hr>
+
+            <footer>
+				<!--<p>The views and opinions expressed in this page are strictly those of the page author. The contents of this page have not been reviewed or approved by the University of Minnesota.</p>-->
+                <p>&copy; Apostolos Kottas 2012</p>
+            </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
